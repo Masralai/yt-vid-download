@@ -19,7 +19,7 @@ This is a **YouTube Video Downloader** built using **React, Next.js, and Tailwin
 
 ### Backend (API & Video Downloading):
 - **Python** - Used for video downloading
-- **yt-dlp** - Powerful YouTube downloading library
+- **yt-dlp (Version 2025.01.15)** - Powerful YouTube downloading library
 - **child_process (Node.js)** - Executes the Python script within Next.js API routes
 
 ## 📦 Installation
