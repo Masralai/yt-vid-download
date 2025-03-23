@@ -1,5 +1,8 @@
 import yt_dlp
 
+
+print(yt_dlp.__version__)
+
 url = input("Enter URL")
 
 ydl_opts = {
