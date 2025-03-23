@@ -1,22 +1,34 @@
 const express = require("express");
-const { spawn } = require("child_process");
+const cors = require("cors");
+const { exec } = require("child_process");
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
-app.post("/download-video", (req, res) => {
-    const url = req.body.url;
-    if (!url) return res.status(400).json({ error: "No URL provided" });
+// API Endpoint to download video
+app.post("/download", (req, res) => {
+    const videoUrl = req.body.url;
+    if (!videoUrl) {
+        return res.status(400).json({ error: "URL is required" });
+    }
 
-    const pythonProcess = spawn("python", ["download.py", url]);
+    const outputFile = `downloads/video.mp4`;
 
-    pythonProcess.stdout.on("data", (data) => {
-        res.json({ message: "Download complete", output: data.toString() });
-    });
-
-    pythonProcess.stderr.on("data", (data) => {
-        res.status(500).json({ error: data.toString() });
+    // Execute yt-dlp command
+    exec(`yt-dlp -o ${outputFile} ${videoUrl}`, (error, stdout, stderr) => {
+        if (error) {
+            return res.status(500).json({ error: "Failed to download video" });
+        }
+        res.json({ downloadLink: `/video.mp4` });
     });
 });
 
-app.listen(3000, () => console.log("Node.js running on port 3000"));
+// Serve the downloaded files
+app.use(express.static("downloads"));
+
+app.listen(5000, () => {
+    console.log("Server is running on port 5000");
+});
