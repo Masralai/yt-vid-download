@@ -1,26 +1,27 @@
 # YouTube Video Downloader
 
 ## 📝 Description
-This is a **YouTube Video Downloader** built using **React, Next.js, and TailwindCSS** for the frontend, with **Next.js API Routes** handling the backend. The backend interacts with **yt-dlp** in Python to download videos in various formats and resolutions.
+This is a **YouTube Video Downloader** featuring a frontend built with **React, Next.js, and TailwindCSS**. The backend functionality for video downloading is handled by a separate **Python API service built with Flask**. This Flask backend interacts with **yt-dlp** to download videos based on requests from the Next.js frontend.
 
 ## 🎮 Features
-- Simple and user-friendly UI
-- Uses **yt-dlp** for powerful and reliable video downloading
-- Next.js for server-side rendering and API routes
-- TailwindCSS for a clean and modern design
-- No separate Express.js backend required
+- Simple and user-friendly UI built with Next.js and TailwindCSS.
+- Dedicated Python Flask backend API for handling download logic.
+- Uses **yt-dlp** for powerful and reliable video downloading.
+- Clear separation between frontend (Next.js) and backend (Flask) concerns.
 
 ## 🛠️ Technologies Used
-### Frontend & Backend:
-- **React** - Frontend framework
-- **Next.js** - Server-side rendering and API routes (replaces Express.js)
+### Frontend:
+- **React** - Frontend library
+- **Next.js** - Frontend framework (Server-side rendering, routing, etc.)
 - **TailwindCSS** - Styling and responsiveness
 - **TypeScript** - Type safety and maintainability
 
 ### Backend (API & Video Downloading):
-- **Python** - Used for video downloading
+- **Python** - Language for the backend API
+- **Flask** - Micro web framework for the Python API
+- **Flask-Cors** - Handles Cross-Origin Resource Sharing for the Flask API
 - **yt-dlp (Version 2025.01.15)** - Powerful YouTube downloading library
-- **child_process (Node.js)** - Executes the Python script within Next.js API routes
+
 
 ## 📦 Installation
 1. Clone the repository:
